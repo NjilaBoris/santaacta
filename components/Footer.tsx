@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/navlinks";
 import { FacebookMark, XMark } from "@/icons";
-
 const flatLinks = NAV_LINKS.filter((link) => !("submenu" in link) || !link.submenu);
 const submenuGroups = NAV_LINKS.filter(
   (link): link is Extract<(typeof NAV_LINKS)[number], { submenu: readonly unknown[] }> =>
@@ -13,7 +12,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-white/10 bg-[#151110]">
+    <footer className="w-full border-t border-gray-100 bg-neutral-100">
       <div className="mx-auto max-w-[110rem] px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           {/* Brand column */}
@@ -22,12 +21,12 @@ export default function Footer() {
               <Image
                 src="/actalogo1.svg"
                 alt="ACTA"
-                className="h-11 w-auto object-contain"
+                className="h-9 w-auto object-contain"
                 width={100}
-                height={105}
+                height={40}
               />
             </Link>
-            <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-[#c9c2bd] sm:text-sm">
+            <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-sm">
               ACTA connects residents of Santa with their local council — news, services,
               departments, and a direct line to elected representatives.
             </p>
@@ -38,7 +37,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Follow us on X"
-                className="text-[#c9c2bd] transition-colors hover:text-white"
+                className="text-gray-500 transition-colors hover:text-black"
               >
                 <XMark className="h-4 w-4" />
               </a>
@@ -47,7 +46,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Follow us on Facebook"
-                className="text-[#c9c2bd] transition-colors hover:text-white"
+                className="text-gray-500 transition-colors hover:text-black"
               >
                 <FacebookMark className="h-4 w-4" />
               </a>
@@ -56,15 +55,13 @@ export default function Footer() {
 
           {/* Explore: flat top-level links */}
           <div>
-            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white">
-              Explore
-            </p>
+            <p className="text-[13px] font-medium text-black/45">Explore</p>
             <ul className="mt-4 flex flex-col gap-2.5">
               {flatLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[13px] text-[#c9c2bd] transition-colors hover:text-white sm:text-sm"
+                    className="text-[13px] text-gray-500 transition-colors hover:text-black sm:text-sm"
                   >
                     {link.label}
                   </Link>
@@ -76,14 +73,12 @@ export default function Footer() {
           {/* One column per submenu group (Santa Council, Multimedia, Engage) */}
           {submenuGroups.map((group) => (
             <div key={group.label}>
-              <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white">
-                {group.label}
-              </p>
+              <p className="text-[13px] font-medium text-black/45">{group.label}</p>
               <ul className="mt-4 flex flex-col gap-2.5">
                 <li>
                   <Link
                     href={group.href}
-                    className="text-[13px] text-[#c9c2bd] transition-colors hover:text-white sm:text-sm"
+                    className="text-[13px] text-gray-500 transition-colors hover:text-black sm:text-sm"
                   >
                     Overview
                   </Link>
@@ -92,7 +87,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-[13px] text-[#c9c2bd] transition-colors hover:text-white sm:text-sm"
+                      className="text-[13px] text-gray-500 transition-colors hover:text-black sm:text-sm"
                     >
                       {item.label}
                     </Link>
@@ -103,20 +98,20 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[12px] text-[#948d89] sm:text-[13px]">
-            © {year} ACTA  Santa Council. All rights reserved.
+        <div className="mt-12 flex flex-col gap-4 border-t border-gray-100 pt-6 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[12px] text-gray-400 sm:text-[13px]">
+            © {year} ACTA — Santa Council. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy-policy"
-              className="text-[12px] text-[#948d89] transition-colors hover:text-white sm:text-[13px]"
+              className="text-[12px] text-gray-400 transition-colors hover:text-black sm:text-[13px]"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-[12px] text-[#948d89] transition-colors hover:text-white sm:text-[13px]"
+              className="text-[12px] text-gray-400 transition-colors hover:text-black sm:text-[13px]"
             >
               Terms of Use
             </Link>

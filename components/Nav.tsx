@@ -7,47 +7,8 @@ import { ChevronDown, Menu, X as CloseIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { IconCurrentLocation } from "@tabler/icons-react";
-
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "News & Update", href: "/news" },
-  {
-    label: "Santa Council",
-    href: "/santa-council",
-    submenu: [
-      { label: "Council Departments", href: "/santa-council/council-department" },
-      { label: "Council Services", href: "/santa-council/council-services" },
-      { label: "Executive & Leadership", href: "/santa-council/executive-&-leadership" },
-    ],
-  },
-  {
-    label: "Resources",
-    href: "/resources",
-  },
-  // {
-  //   label: "Councillors & Committes",
-  //   href: "/council-&-committes",
-  // },
-  {
-    label: "Multimedia",
-    href: "/multimedia",
-    submenu: [
-      { label: "Gallery", href: "/multimedia/gallery" },
-    ],
-  },
-  {
-    label: "Engage",
-    href: "/engage",
-    submenu: [
-      { label: "Write to your MP", href: "/engage/write-council" },
-      { label: "Polls", href: "/engage/polls" },
-    ],
-  },
-  { label: "Governance Dashboard", href: "/gorvernance-dashboard" },
-  { label: "Blog", href: "/blog" },
-  { label: "About Us", href: "/about-us" },
-  { label: "Contact Us", href: "/contact-us" },
-] as const;
+import { NAV_LINKS } from "@/navlinks";
+import { FacebookMark, XMark } from "@/icons";
 
 function useLocation() {
   const [location, setLocation] = useState<string | null>(null);
@@ -80,29 +41,12 @@ function useNow() {
   return now;
 }
 
-function XMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
-
-function FacebookMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M13.5 21.75v-8.1h2.72l.41-3.15h-3.13V8.49c0-.91.25-1.53 1.56-1.53h1.67V4.14A22.4 22.4 0 0 0 14.33 4c-2.4 0-4.05 1.47-4.05 4.16v2.32H7.55v3.15h2.73v8.1z" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const pathname = usePathname();
   const location = useLocation();
   const now = useNow();
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerSubOpen, setDrawerSubOpen] = useState<string | null>(null);
 
@@ -114,13 +58,113 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="w-full fixed border-b z-44 border-white/10 bg-[#151110]">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-gray-100 bg-white">
       <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-10">
-        <div className="flex h-14 items-center justify-between sm:h-16">
+        <div className="flex h-16 items-center justify-between sm:h-[4.5rem]">
+          {/* Left: mobile menu button + logo + desktop nav */}
+          <div className="flex items-center gap-8">
+            <button
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={drawerOpen}
+              onClick={() => setDrawerOpen(true)}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:text-black lg:hidden"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+
+            <Link href="/" onClick={closeDrawer} className="flex select-none items-center">
+              <Image
+                src="/actalogo1.svg"
+                alt="ACTA"
+                className="h-8 w-auto object-contain sm:h-9"
+                width={100}
+                height={40}
+              />
+            </Link>
+
+            <ul
+              className="hidden items-center gap-7 lg:flex"
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link.href);
+                const hasSubmenu = "submenu" in link && Boolean(link.submenu);
+                return (
+                  <li
+                    key={link.label}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (hasSubmenu) setOpenMenu(link.label);
+                    }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`flex items-center gap-1 py-1 text-[14px] transition-colors ${
+                        active
+                          ? "font-semibold text-black"
+                          : "text-gray-500 hover:text-black"
+                      }`}
+                    >
+                      {link.label}
+                      {hasSubmenu && (
+                        <ChevronDown
+                          className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                            openMenu === link.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+                    </Link>
+
+                    {"submenu" in link && link.submenu && (
+                      <AnimatePresence>
+                        {openMenu === link.label && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 8 }}
+                            transition={{ duration: 0.18, ease: "easeOut" }}
+                            className="absolute left-0 top-full z-50 mt-3 w-80 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-black/[0.08] sm:w-96"
+                          >
+                            <p className="px-5 pt-5 text-[13px] font-medium text-black/45">
+                              {link.label}
+                            </p>
+                            <div className="p-3 pt-2">
+                              {link.submenu.map((item) => (
+                                <Link
+                                  key={item.label}
+                                  href={item.href}
+                                  className="flex items-start gap-3.5 rounded-xl px-2 py-3 transition-colors hover:bg-gray-50"
+                                >
+                                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-[#151110]">
+                                    <item.icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+                                  </span>
+                                  <span className="min-w-0">
+                                    <p className="text-[13.5px] font-semibold text-[#151110] sm:text-sm">
+                                      {item.label}
+                                    </p>
+                                    <p className="mt-0.5 text-[12.5px] leading-snug text-black/45">
+                                      {item.description}
+                                    </p>
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Right: utility icons */}
           <div className="flex items-center gap-2.5 sm:gap-4">
             <span
               suppressHydrationWarning
-              className="hidden items-center whitespace-nowrap text-[11px] font-medium tabular-nums text-[#c9c2bd] transition-colors hover:text-white sm:flex sm:text-xs"
+              className="hidden items-center whitespace-nowrap text-[11px] font-medium tabular-nums text-gray-500 transition-colors hover:text-black sm:flex sm:text-xs"
             >
               {now &&
                 now.toLocaleString(undefined, {
@@ -133,147 +177,43 @@ export default function Navbar() {
                 })}
             </span>
 
-            <span className="hidden h-4 w-px bg-white/15 lg:hidden sm:block" aria-hidden="true" />
+            <span className="hidden h-4 w-px bg-gray-200 sm:block" aria-hidden="true" />
 
-            <button
-              type="button"
-              aria-label="Open menu"
-              aria-expanded={drawerOpen}
-              onClick={() => setDrawerOpen(true)}
-              className="flex h-8 w-8 items-center lg:hidden justify-center rounded-full text-[#c9c2bd] transition-colors hover:text-white sm:h-9 sm:w-9"
-            >
-              <Menu className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
-            </button>
-          </div>
-
-          <Link
-            href="/"
-            onClick={closeDrawer}
-            className="absolute left-1/2 -translate-x-1/2 select-none"
-          >
-            <Image
-              src="/actalogo1.svg"
-              alt="PARLI ACCESS"
-              className="h-13 w-auto object-contain lg:h-13"
-              width={100}
-              height={105}
-            />
-          </Link>
-
-          <div className="flex items-center gap-2.5 sm:gap-4">
             <a
               href="https://x.com"
               target="_blank"
               rel="noreferrer"
               aria-label="Follow us on X"
-              className="hidden text-[#c9c2bd] transition-colors hover:text-white xs:inline-flex"
+              className="hidden text-gray-500 transition-colors hover:text-black xs:inline-flex"
             >
-              <XMark className="h-[15px] w-[15px] sm:h-4 sm:w-4" />
+              <XMark className="h-4 w-4" />
             </a>
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
               aria-label="Follow us on Facebook"
-              className="hidden text-[#c9c2bd] transition-colors hover:text-white xs:inline-flex"
+              className="hidden text-gray-500 transition-colors hover:text-black xs:inline-flex"
             >
-              <FacebookMark className="h-[15px] w-[15px] sm:h-4 sm:w-4" />
+              <FacebookMark className="h-4 w-4" />
             </a>
 
-            <span className="hidden h-4 w-px bg-white/15 xs:block" aria-hidden="true" />
+            <span className="hidden h-4 w-px bg-gray-200 xs:block" aria-hidden="true" />
 
             <button
               type="button"
               aria-label="Location"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-[#c9c2bd] transition-colors hover:text-white sm:h-9 sm:w-9"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:text-black"
             >
               <span suppressHydrationWarning className="text-sm">
-                {location ?? (
-                  <IconCurrentLocation className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
-                )}
+                {location ?? <IconCurrentLocation className="h-[18px] w-[18px]" />}
               </span>
             </button>
           </div>
         </div>
-
-        <nav className="relative border-t border-white/10">
-          <ul
-            className="scrollbar-none lg:flex hidden items-center gap-5 overflow-x-auto whitespace-nowrap py-3 sm:gap-7 sm:py-3.5 lg:gap-8 lg:overflow-visible"
-            onMouseLeave={() => setHovered(null)}
-          >
-            {NAV_LINKS.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <li
-                  key={link.label}
-                  className="relative shrink-0"
-                  onMouseEnter={() => {
-                    setHovered(link.label);
-                    if ("submenu" in link && link.submenu) setOpenMenu(link.label);
-                  }}
-                  onMouseLeave={() => {
-                    if ("submenu" in link && link.submenu) setOpenMenu(null);
-                  }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`lg:flex items-center hidden gap-1 py-1 text-[11.5px] transition-colors xs:text-xs sm:text-[13px] lg:text-[13.5px] ${
-                      active ? "text-[#26A3DB]" : "text-[#c9c2bd] hover:text-white"
-                    }`}
-                  >
-                    {link.label}
-                    {"submenu" in link && link.submenu && (
-                      <ChevronDown
-                        className={`h-3 w-3 transition-transform duration-200 ${
-                          openMenu === link.label ? "rotate-180" : ""
-                        }`}
-                      />
-                    )}
-                  </Link>
-
-                  {(active || hovered === link.label) && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      transition={{ type: "spring", stiffness: 500, damping: 40 }}
-                      className="absolute -bottom-[13px] left-0 right-0 h-[2px] bg-[#26A3DB] sm:-bottom-[14px]"
-                    />
-                  )}
-
-                  {"submenu" in link && link.submenu && (
-                    <AnimatePresence>
-                      {openMenu === link.label && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.18, ease: "easeOut" }}
-                          className="absolute left-0 top-full z-50 mt-3 w-72 overflow-hidden rounded-2xl border border-white/10 bg-[#1c1716] shadow-2xl shadow-black/40 sm:w-80"
-                        >
-                          <div className="p-2">
-                            {link.submenu.map((item) => (
-                              <Link
-                                key={item.label}
-                                href={item.href}
-                                className="block rounded-xl px-4 py-3 transition-colors hover:bg-white/5"
-                              >
-                                <p className="text-[13px] font-medium text-white sm:text-[14px]">
-                                  {item.label}
-                                </p>
-                              </Link>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-[#151110] to-transparent lg:hidden" />
-        </nav>
       </div>
 
+      {/* Mobile drawer */}
       <AnimatePresence>
         {drawerOpen && (
           <>
@@ -283,34 +223,30 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={closeDrawer}
-              className="fixed inset-0 z-40 bg-black/60"
+              className="fixed inset-0 z-40 bg-black/30"
             />
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.28, ease: "easeOut" }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[86vw] max-w-sm flex-col bg-[#151110] shadow-2xl sm:w-96"
+              className="fixed inset-y-0 left-0 z-50 flex w-[86vw] max-w-sm flex-col bg-white shadow-2xl sm:w-96"
             >
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                <Link
-                  href="/"
-                  onClick={closeDrawer}
-                  className="absolute left-1/2 -translate-x-1/2 select-none"
-                >
+              <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
+                <Link href="/" onClick={closeDrawer} className="select-none">
                   <Image
                     src="/actalogo1.svg"
-                    alt="PARLI ACCESS"
-                    className="h-13 w-auto object-contain lg:h-13"
+                    alt="ACTA"
+                    className="h-8 w-auto object-contain"
                     width={100}
-                    height={105}
+                    height={40}
                   />
                 </Link>
                 <button
                   type="button"
                   aria-label="Close menu"
                   onClick={closeDrawer}
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#c9c2bd] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 hover:text-black"
                 >
                   <CloseIcon className="h-5 w-5" />
                 </button>
@@ -327,7 +263,7 @@ export default function Navbar() {
                             onClick={() =>
                               setDrawerSubOpen((cur) => (cur === link.label ? null : link.label))
                             }
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-[14px] text-[#c9c2bd] transition-colors hover:bg-white/5 hover:text-white sm:text-[15px]"
+                            className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-[14px] text-gray-600 transition-colors hover:bg-gray-50 hover:text-black sm:text-[15px]"
                           >
                             {link.label}
                             <ChevronDown
@@ -345,17 +281,25 @@ export default function Navbar() {
                                 transition={{ duration: 0.18, ease: "easeOut" }}
                                 className="overflow-hidden"
                               >
-                                <div className="flex flex-col gap-0.5 py-1 pl-4">
+                                <div className="flex flex-col gap-0.5 py-1 pl-2">
                                   {link.submenu.map((item) => (
                                     <Link
                                       key={item.label}
                                       href={item.href}
                                       onClick={closeDrawer}
-                                      className="rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                                      className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-gray-50"
                                     >
-                                      <p className="text-[13px] font-medium text-white sm:text-[13.5px]">
-                                        {item.label}
-                                      </p>
+                                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-[#151110]">
+                                        <item.icon className="h-4 w-4" strokeWidth={1.75} />
+                                      </span>
+                                      <span className="min-w-0">
+                                        <p className="text-[13px] font-medium text-black sm:text-[13.5px]">
+                                          {item.label}
+                                        </p>
+                                        <p className="mt-0.5 text-[11.5px] leading-snug text-black/45">
+                                          {item.description}
+                                        </p>
+                                      </span>
                                     </Link>
                                   ))}
                                 </div>
@@ -367,8 +311,8 @@ export default function Navbar() {
                         <Link
                           href={link.href}
                           onClick={closeDrawer}
-                          className={`block rounded-lg px-3 py-3 text-[14px] transition-colors hover:bg-white/5 sm:text-[15px] ${
-                            isActive(link.href) ? "text-white" : "text-[#c9c2bd] hover:text-white"
+                          className={`block rounded-lg px-3 py-3 text-[14px] transition-colors hover:bg-gray-50 sm:text-[15px] ${
+                            isActive(link.href) ? "font-semibold text-black" : "text-gray-600 hover:text-black"
                           }`}
                         >
                           {link.label}
@@ -379,13 +323,13 @@ export default function Navbar() {
                 </ul>
               </div>
 
-              <div className="flex items-center gap-4 border-t border-white/10 px-5 py-4">
+              <div className="flex items-center gap-4 border-t border-gray-100 px-5 py-4">
                 <a
                   href="https://x.com"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Follow us on X"
-                  className="text-[#c9c2bd] transition-colors hover:text-white"
+                  className="text-gray-500 transition-colors hover:text-black"
                 >
                   <XMark className="h-4 w-4" />
                 </a>
@@ -394,7 +338,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Follow us on Facebook"
-                  className="text-[#c9c2bd] transition-colors hover:text-white"
+                  className="text-gray-500 transition-colors hover:text-black"
                 >
                   <FacebookMark className="h-4 w-4" />
                 </a>
