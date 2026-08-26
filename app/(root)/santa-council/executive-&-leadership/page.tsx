@@ -8,18 +8,32 @@ interface Stage {
   title: string;
 }
 
+interface SessionFact {
+  id: string;
+  label: string;
+  detail: string;
+}
+
+const sessionFacts: SessionFact[] = [
+  {
+    id: "ordinary",
+    label: "Mme Wopong Constance Awa",
+    detail: "Secretary General",
+  },
+  {
+    id: "extraordinary",
+    label: "Mme Muluhkoh Salonie Mengwi",
+    detail:
+      "Municipal Treasurer",
+  },
+];
 
 const stages: Stage[] = [
-  { number: "29", title: "Far North" },
-  { number: "28", title: "Centre" },
-  { number: "25", title: "West" },
-  { number: "20", title: "North West" },
-  { number: "19", title: "Littoral" },
-  { number: "15", title: "South West" },
-  { number: "12", title: "North" },
-  { number: "11", title: "East" },
-  { number: "11", title: "South" },
-  { number: "10", title: "Adamaoua" },
+  { number: "Mayor", title: "Councillor Samkie Elvis Gahnyam II" },
+  { number: "1st Deputy Mayor", title: "Councillor Cho Eric Ndikum" },
+  { number: "2nd Deputy Mayor", title: "Councillor Javice Azong Tabefor" },
+  { number: "3rd Deputy Mayor", title: "Councillor Fonjindam Jannette Fuche" },
+  { number: "4th Deputy Mayor", title: "Councillor Hassan Oumarou" },
 ];
 
 const headerContainer: Variants = {
@@ -67,50 +81,24 @@ export default function LegislativeProcedure() {
             variants={fadeUp}
             className="mb-5 flex items-center gap-3 text-gray-600 text-[clamp(0.68rem,0.63rem+0.2vw,0.78rem)] uppercase tracking-[0.18em] sm:mb-6"
           >
-            organization
+            Executive & Leadership
           </motion.div>
 
           <motion.h2
             variants={fadeUp}
             className="text-balance text-[clamp(1.9rem,1.5rem+2vw,3.1rem)] font-semibold leading-[1.1] tracking-tight text-gray-700"
           >
-            Institutional organization
+            Council Executive
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="mt-5 text-pretty text-[clamp(0.92rem,0.86rem+0.3vw,1.08rem)] leading-relaxed text-[#1C1B18]/75 sm:mt-6"
           >
-           <span className="font-semibold text-neutral-900">The Bureau</span>   the principal governing body, elected each legislative year: 1 President, 1 Senior Vice President, 5 Vice Presidents, 4 Questors, and 12 Secretaries, with the Secretary General sitting ex officio.
-          </motion.p>
-
-          <motion.p
-            variants={fadeUp}
-            className="mt-3 text-pretty text-[clamp(0.92rem,0.86rem+0.3vw,1.08rem)] leading-relaxed text-[#1C1B18]/75"
-          >
-           <span className="font-semibold text-neutral-900">The Chairmen&apos;s Conference</span> established under Section 39 of Law No. 2014/16, gathering the President, Bureau members, the nine Committee Chairpersons, and Parliamentary Group leaders to set the agenda and rule on bill admissibility.
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            className="mt-3 text-pretty text-[clamp(0.92rem,0.86rem+0.3vw,1.08rem)] leading-relaxed text-[#1C1B18]/75"
-          >
-          <span className="font-semibold text-neutral-900">The Secretariat General</span>  administrative continuity under the Secretary General and two Deputy Secretaries General, overseeing legislative affairs, international relations, budget, and documentary information.
+          The Santa Council Executive provides political and administrative leadership for the municipality: guiding Council affairs, overseeing local development priorities, and supporting the delivery of municipal services.
           </motion.p>
         </motion.div>
         <div className="mt-14 sm:mt-16 lg:mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 flex items-center gap-3 sm:mb-10"
-          >
-            <span className=" text-[clamp(0.68rem,0.63rem+0.2vw,0.78rem)] uppercase tracking-[0.18em] text-gray-600">
-              Composition by region  10th Legislature
-            </span>
-            
-          </motion.div>
-
           <motion.ol
             variants={gridContainer}
             initial="hidden"
@@ -124,16 +112,50 @@ export default function LegislativeProcedure() {
                 variants={cardVariants}
                 className="group relative flex flex-col rounded-xl border border-[#0B3B2E]/10 bg-[#FCFAF4] p-5 transition-colors hover:border-[#B08D57]/50 sm:p-6"
               >
-                <span className="mt-2 text-[clamp(1rem,1rem+0.3vw,1rem)] font-semibold leading-snug text-gray-500">
-                 Region : {" "} {stage.title}
-                </span>
                 <span className=" text-[clamp(0.92rem,0.87rem+0.25vw,1.02rem)] font-medium text-gray-700">
-                 Seats : {" "} {stage.number}
+                 {stage.number}
+                </span>
+                 <span className="mt-2 text-[clamp(1rem,1rem+0.3vw,1rem)] font-semibold leading-snug text-gray-500">
+                  {stage.title}
                 </span>
               </motion.li>
             ))}
-          </motion.ol>
-           <h6 className="text-sm mt-4 text-neutral-500">180 members across 49 constituencies representing all ten regions  119 men and 61 women in the current legislature.</h6>
+          </motion.ol>       
+
+            <motion.h2
+            variants={fadeUp}
+            className="text-balance text-[clamp(1.3rem,1.1rem+2vw,2.1rem)] my-8 font-semibold leading-[1.1] tracking-tight text-gray-700"
+          >
+            Technical & Administrative Support
+          </motion.h2>
+           <motion.p
+            variants={fadeUp}
+            className="mt-5 text-pretty text-[clamp(0.92rem,0.86rem+0.3vw,1.08rem)] leading-relaxed text-[#1C1B18]/75 sm:mt-6"
+          >
+          The Council Executive is supported by technical and administrative personnel who contribute to the effective management of Council operations.
+          </motion.p>
+            <motion.div
+          variants={gridContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[#0B3B2E]/10 bg-[#0B3B2E]/10 sm:mt-12 sm:grid-cols-2"
+        >
+          {sessionFacts.map((fact) => (
+            <motion.div
+              key={fact.id}
+              variants={cardVariants}
+              className="flex flex-col bg-[#FCFAF4] p-6 sm:p-7"
+            >
+              <span className="text-[clamp(1rem,0.94rem+0.3vw,1.15rem)] font-semibold leading-snug text-gray-700">
+                {fact.label}
+              </span>
+              <span className="mt-2 text-[clamp(0.82rem,0.78rem+0.2vw,0.92rem)] leading-relaxed text-[#1C1B18]/65">
+                {fact.detail}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
         </div>
       </div>
     </section>
