@@ -9,35 +9,24 @@ const supabase = createClient(
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const NOTIFY_EMAIL = "peoplesparliament5@gmail.com"; 
+const NOTIFY_EMAIL = "peoplesparliament5@gmail.com";
 
 type Payload = {
-  regionId: string;
-  regionName: string;
-  divisionId: string;
-  divisionName: string;
-  constituencyId: string;
-  constituencyName: string;
-  mpId?: string;
-  mpName?: string;
+  community: string;
+  representative: string;
   subject: string;
   message: string;
   email: string;
-  phone: string;
+  phone?: string;
 };
 
 function isValid(body: Partial<Payload>): body is Payload {
   return Boolean(
-    body.regionId &&
-      body.regionName &&
-      body.divisionId &&
-      body.divisionName &&
-      body.constituencyId &&
-      body.constituencyName &&
+    body.community?.trim() &&
+      body.representative?.trim() &&
       body.subject?.trim() &&
       body.message?.trim() &&
-      body.email?.trim() &&
-      body.phone?.trim()
+      body.email?.trim()
   );
 }
 
@@ -52,21 +41,16 @@ export async function POST(req: Request) {
   if (!isValid(body)) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
+
   const { data, error: dbError } = await supabase
-    .from("mp_messages")
+    .from("council_messages")
     .insert({
-      region_id: body.regionId,
-      region_name: body.regionName,
-      division_id: body.divisionId,
-      division_name: body.divisionName,
-      constituency_id: body.constituencyId,
-      constituency_name: body.constituencyName,
-      mp_id: body.mpId || null,
-      mp_name: body.mpName || null,
+      community: body.community,
+      representative: body.representative,
       subject: body.subject,
       message: body.message,
       email: body.email,
-      phone: body.phone,
+      phone: body.phone || null,
     })
     .select()
     .single();
@@ -78,18 +62,16 @@ export async function POST(req: Request) {
 
   try {
     await resend.emails.send({
-      from: "Parli Access <notifications@parliaccess.org>",
+      from: "ACTA Contact Form <noreply@santaacta.com>",
       to: NOTIFY_EMAIL,
       replyTo: body.email,
-      subject: `New message to MP: ${body.subject}`,
+      subject: `New message to representative: ${body.subject}`,
       html: `
-        <h2>New "Write to your MP" submission</h2>
-        <p><strong>Region:</strong> ${body.regionName}</p>
-        <p><strong>Division:</strong> ${body.divisionName}</p>
-        <p><strong>Constituency:</strong> ${body.constituencyName}</p>
-        <p><strong>MP:</strong> ${body.mpName || "Not specified"}</p>
+        <h2>New "Write to your Mayor / Councillor" submission</h2>
+        <p><strong>Community / Quarter:</strong> ${body.community}</p>
+        <p><strong>Representative:</strong> ${body.representative}</p>
         <p><strong>Subject:</strong> ${body.subject}</p>
-        <p><strong>From:</strong> ${body.email} / ${body.phone}</p>
+        <p><strong>From:</strong> ${body.email} / ${body.phone || "Not provided"}</p>
         <hr />
         <p style="white-space: pre-wrap;">${body.message}</p>
         <hr />
@@ -97,7 +79,6 @@ export async function POST(req: Request) {
       `,
     });
   } catch (emailError) {
-    
     console.error("Resend error:", emailError);
   }
 

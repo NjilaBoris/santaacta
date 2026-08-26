@@ -64,14 +64,16 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <Chamber
           eyebrow=""
-          title="About Parli Access"
-          body="Parli Access is a civic technology platform that bridges the gap between citizens and the National Assembly of Cameroon by providing clear, reliable, and user-friendly parliamentary information in both English and French. The platform helps citizens understand the role and functioning of the National Assembly, access information about Members of Parliament and their constituencies, follow bills and legislative developments, and explore committee reports and other parliamentary resources — while promoting active participation through polls, public consultations, feedback mechanisms, and civic dialogue. By making parliamentary information more accessible and understandable, Parli Access strengthens transparency, accountability, and informed democratic participation in Cameroon."
+          title="About ACTA"
+          body="ACTA is a civic technology initiative designed to make local governance more open, accessible, and responsive to the people of Santa Subdivision. It provides citizens with simplified information about the Santa Council, its elected representatives, committees, services, decisions, and development activities.
+Through digital tools, ACTA creates opportunities for residents to share their views, raise concerns, participate in surveys, and communicate with local authorities. By connecting information with citizen participation, ACTA seeks to foster greater public understanding, accountability, and constructive engagement in local governance."
         />
 
         <Chamber
           eyebrow=""
-          title="About The People's Parliament"
-          body="The People's Parliament is a civic engagement initiative committed to strengthening the connection between citizens and institutions in Cameroon. It promotes civic education, public dialogue, transparency, and accountable governance by creating accessible spaces for citizens to understand parliamentary and governance processes. Through community dialogues, youth engagement programmes, public discussions, and digital participation tools, the initiative encourages informed and constructive citizen participation in public affairs."
+          title="POLITICOS"
+          body="The Policy Lab for Civic Innovation and Community Solutions (POLITICOS) is a problem-solving think tank dedicated to bridging the gap between evidence, governance, and citizen action. It develops evidence-based and citizen-centred solutions to complex governance and development challenges.
+Through the integration of research, civic technology, and participatory democracy, POLITICOS designs, tests, and scales practical approaches that strengthen accountability, improve institutional performance, and support sustainable development outcomes, grounded in the belief that effective governance requires informed citizens, responsive institutions, reliable evidence, and meaningful opportunities for people to participate in decisions that affect their communities."
         />
       </section>
 

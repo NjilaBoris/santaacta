@@ -3,7 +3,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='h-dvh lg:pt-20 pt-8 md:pt-12'>
+    <div className='h-full lg:pt-20 pt-8 md:pt-12'>
        <ParliamentPoll/>
     </div>
   )

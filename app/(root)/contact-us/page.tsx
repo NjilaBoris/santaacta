@@ -130,7 +130,7 @@ export default function ContactSalesPage() {
               transition={{ delay: 0.08 }}
               className="mt-4 max-w-md text-[clamp(0.9rem,0.84rem+0.25vw,1.05rem)] leading-relaxed text-slate-500 sm:mt-5"
             >
-              We would love to hear from you  whether you have a question, suggestion, partnership proposal, or feedback about Parli Access.
+              Have a question, suggestion, community concern, or partnership idea? We would love to hear from you. Connect with ACTA and help strengthen local participation in Santa.
             </motion.p>
 
 

@@ -28,50 +28,24 @@ const resources: Resource[] = [
   {
     id: "standing-orders",
     icon: Gavel,
-    name: "Standing Orders",
+    name: "Law No. 2019/024 of 24 December 2019",
     description:
-      "Law No. 2014/16 governing the internal proceedings of the National Assembly.",
-    href: "https://www.assnat.cm/images/Assembl%C3%A9e_r%C3%A8glement_anglais_final.pdf",
+      "Bill to institute the general code of regional and local authorities.",
+    href: "https://www.prc.cm/en/news/the-acts/laws/4049-law-no-2019-024-of-24-december-2019-bill-to-institute-the-general-code-of-regional-and-local-authorities",
     cta: "Open PDF",
     external: true,
   },
   {
     id: "constitution",
     icon: ScrollText,
-    name: "Constitution of the Republic",
+    name: "Electoral Code",
     description:
-      "Law No. 2008/001 of 14 April 2008 amending the 1972 Constitution.",
-    href: "https://www.prc.cm/en/multimedia/documents/6282-loi-n-2008-001-du-14-04-2008-modifian-constitution-1972-en",
+      "The electoral code governing elections in Cameroon, published by ELECAM.",
+    href: "https://portail.elecam.cm/download/code-electoral/",
     cta: "Open PDF",
     external: true,
   },
-  {
-    id: "electoral-code",
-    icon: Vote,
-    name: "Electoral Code",
-    description: "Governing framework for elections, published by ELECAM.",
-    href: "https://portail.elecam.cm/download/code-electoral/",
-    cta: "Download",
-    external: true,
-  },
-  {
-    id: "legislative-procedure",
-    icon: BookOpen,
-    name: "Legislative Procedure",
-    description: "A plain-language guide to how a bill becomes law.",
-    href: "#",
-    cta: "View guide",
-    external: false,
-  },
-  {
-    id: "policy-debrief",
-    icon: Newspaper,
-    name: "Policy Debrief",
-    description: "A recurring briefing series on legislation under review.",
-    href: "#",
-    cta: "Browse series",
-    external: false,
-  },
+ 
 ];
 
 const headerContainer: Variants = {
@@ -122,15 +96,14 @@ export default function ResourcesSection() {
             variants={fadeUp}
             className="text-balance text-[clamp(2rem,1.6rem+2vw,3.25rem)] font-semibold leading-[1.1] tracking-tight"
           >
-            Resources
+            Laws & reference documents
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="mt-5 max-w-xl text-pretty text-[clamp(0.95rem,0.88rem+0.35vw,1.15rem)] leading-relaxed text-[#1C1B18]/75 sm:mt-6"
           >
-            Primary documents and reference material governing the work of
-            the National Assembly.
+            Primary texts that govern local authorities and elections in Cameroon.
           </motion.p>
         </motion.div>
 
