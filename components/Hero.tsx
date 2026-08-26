@@ -12,10 +12,10 @@ export type Slide = {
 };
 
 const SLIDES: Slide[] = [
-  { image: "/6.jpg" },
+  { image: "/2.jpg" },
   { image: "/5.jpg" },
-  { image: "/1.jpg" },
-  { image: "/4.jpg" },
+  { image: "/3.jpg" },
+  { image: "/6.jpg" },
 ];
 
 const AUTOPLAY_MS = 6000;
@@ -168,13 +168,13 @@ export default function HeroSlider({ slides = SLIDES }: { slides?: Slide[] }) {
 
             <div className="mt-7 flex flex-wrap gap-3 sm:mt-8">
               <Link
-                href="/national-assembly/history"
-                className="inline-flex items-center gap-2 text-white bg-[#202D61] px-5 py-3 text-[13px] font-semibold transition-colors hover:bg-[#202D61]/80 hover:text-neutral-900 sm:text-sm"
+                href="/santa-council/council-department"
+                className="inline-flex items-center gap-2 text-white bg-[#202D61] px-5 py-3 text-[13px] font-semibold transition-colors hover:bg-[#202D61]/80  sm:text-sm"
               >
                 Explore Council Departments <span aria-hidden="true">&rarr;</span>
               </Link>
               <Link
-                href="/engage/mp"
+                href="/engage/write-council"
                 className="inline-flex items-center gap-2 border border-[#202D61]/70 px-5 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-[#202D61]/80 hover:text-white sm:text-sm"
               >
                 Write to Your Councillor

@@ -22,6 +22,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 export const metadata: Metadata = {
   title: "Santa Acta",
   description: "A civic technology platform bridging citizens and the National Assembly of Cameroon, an initiative of The People's Parliament.",
+  icons: "/actalogo1.svg"
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

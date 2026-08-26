@@ -15,9 +15,9 @@ const NAV_LINKS = [
     label: "Santa Council",
     href: "/santa-council",
     submenu: [
-      { label: "Council Departments", href: "/council-department" },
-      { label: "Council Services", href: "/council-services" },
-      { label: "Executive & Leadership", href: "/executive-&-leadership" },
+      { label: "Council Departments", href: "/santa-council/council-department" },
+      { label: "Council Services", href: "/santa-council/council-services" },
+      { label: "Executive & Leadership", href: "/santa-council/executive-&-leadership" },
     ],
   },
   {
@@ -39,7 +39,7 @@ const NAV_LINKS = [
     label: "Engage",
     href: "/engage",
     submenu: [
-      { label: "Write to your MP", href: "/engage/mp" },
+      { label: "Write to your MP", href: "/engage/write-council" },
       { label: "Polls", href: "/engage/polls" },
     ],
   },
