@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, Search, X as CloseIcon } from "lucide-react";
+import { ChevronDown, Menu, X as CloseIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { IconCurrentLocation } from "@tabler/icons-react";
@@ -24,10 +24,10 @@ const NAV_LINKS = [
     label: "Resources",
     href: "/resources",
   },
-  {
-    label: "Councillors & Committes",
-    href: "/council-&-committes",
-  },
+  // {
+  //   label: "Councillors & Committes",
+  //   href: "/council-&-committes",
+  // },
   {
     label: "Multimedia",
     href: "/multimedia",
@@ -68,6 +68,18 @@ function useLocation() {
   return location;
 }
 
+function useNow() {
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setNow(new Date());
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return now;
+}
+
 function XMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -87,10 +99,10 @@ function FacebookMark({ className }: { className?: string }) {
 export default function Navbar() {
   const pathname = usePathname();
   const location = useLocation();
+  const now = useNow();
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerSubOpen, setDrawerSubOpen] = useState<string | null>(null);
 
@@ -106,18 +118,20 @@ export default function Navbar() {
       <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-10">
         <div className="flex h-14 items-center justify-between sm:h-16">
           <div className="flex items-center gap-2.5 sm:gap-4">
-            <button
-              type="button"
-              aria-label={searchOpen ? "Close search" : "Open search"}
-              onClick={() => setSearchOpen((v) => !v)}
-              className="flex h-8 w-8 items-center justify-center rounded-full text-[#c9c2bd] transition-colors hover:text-white sm:h-9 sm:w-9"
+            <span
+              suppressHydrationWarning
+              className="hidden items-center whitespace-nowrap text-[11px] font-medium tabular-nums text-[#c9c2bd] transition-colors hover:text-white sm:flex sm:text-xs"
             >
-              {searchOpen ? (
-                <CloseIcon className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
-              ) : (
-                <Search className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
-              )}
-            </button>
+              {now &&
+                now.toLocaleString(undefined, {
+                  weekday: "short",
+                  day: "2-digit",
+                  month: "short",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                })}
+            </span>
 
             <span className="hidden h-4 w-px bg-white/15 lg:hidden sm:block" aria-hidden="true" />
 
@@ -173,7 +187,7 @@ export default function Navbar() {
               aria-label="Location"
               className="flex h-8 w-8 items-center justify-center rounded-full text-[#c9c2bd] transition-colors hover:text-white sm:h-9 sm:w-9"
             >
-              <span className="text-sm">
+              <span suppressHydrationWarning className="text-sm">
                 {location ?? (
                   <IconCurrentLocation className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
                 )}
@@ -181,27 +195,6 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
-        <AnimatePresence>
-          {searchOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="overflow-hidden"
-            >
-              <div className="pb-3">
-                <input
-                  autoFocus
-                  type="search"
-                  placeholder="Search the archive, bills, members…"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-[13px] text-white placeholder:text-[#948d89] outline-none focus:border-white/25 sm:text-sm"
-                />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <nav className="relative border-t border-white/10">
           <ul
