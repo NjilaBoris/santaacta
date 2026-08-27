@@ -20,7 +20,7 @@ const FEATURES: Feature[] = [
     title: "Santa Council",
     description: "History, geography and how the Council is organised and run..",
     cta: "EXPLORE",
-    bg: "bg-sky-50",
+    bg: "bg-neutral-100",
     href: "/national-assembly/history"
   },
   {
@@ -28,7 +28,7 @@ const FEATURES: Feature[] = [
     title: "Council Services",
     description: "Civil registration, building permits, market management, hygiene..",
     cta: "SEARCH",
-    bg: "bg-amber-50",
+    bg: "bg-neutral-100",
     href: "/engage/mp"
   },
   {
@@ -36,7 +36,7 @@ const FEATURES: Feature[] = [
     title: "Governance Dashboard",
     description: "Councillors, committees and representation, in numbers..",
     cta: "FOLLOW",
-    bg: "bg-emerald-50",
+    bg: "bg-neutral-100",
     href: "/blog"
   },
   {
@@ -44,7 +44,7 @@ const FEATURES: Feature[] = [
     title: "Engage",
     description: "Write to your mayor or councillor. Take the current poll..",
     cta: "ENGAGE",
-    bg: "bg-rose-50",
+    bg: "bg-neutral-100",
     href: "/engage/write-council"
   },
 ];

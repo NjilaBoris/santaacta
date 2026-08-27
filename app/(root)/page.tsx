@@ -3,8 +3,6 @@ import FeatureGrid from "@/components/Feature";
 import HeroSlider from "@/components/Hero";
 import LatestNews from "@/components/HeroArticle";
 import HeroPortal from "@/components/HeroPortal";
-
-import PodcastSpotlight from "@/components/Podcast";
 import ParliamentPoll from "@/components/Poll";
 import StatsCards from "@/components/Quote";
 
@@ -18,7 +16,7 @@ const Home = () => {
       <LatestNews/>
       <ParliamentPoll/>
       <PoliticsFeed/>
-      <PodcastSpotlight/>
+      {/* <PodcastSpotlight/> */}
       <HeroPortal/>
     </>
   );
