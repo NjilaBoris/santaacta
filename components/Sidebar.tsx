@@ -13,7 +13,6 @@ const NAV_ITEMS = [
   { href: '/admin/blog', label: 'Blog Posts', icon: FileText },
   { href: '/admin/news', label: 'News Posts', icon: Newspaper },
   { href: '/admin/users', label: 'Users', icon: Users },
-  { href: '/admin/podcasts', label: 'Podcast', icon: Podcast },
   { href: '/admin/polls', label: 'Polls', icon: BarChart3 },
 ]
 
@@ -49,7 +48,7 @@ export function Sidebar() {
       {/* Desktop sidebar (lg and up) */}
       <aside className="fixed inset-y-0 left-0  hidden w-64 flex-col border-r border-ink/10 bg-paper-white px-4 py-6 lg:flex">
         <div className="mb-8 px-2">
-           <Image src="/parliicon.svg" alt="PARLI ACCESS" className="h-16 w-auto object-contain  lg:h-18" width={100} height={105} />
+           <Image src="/actalogo1.svg" alt="ACTA" className="h-16 w-auto object-contain  lg:h-18" width={100} height={105} />
           <p className="mt-0.5 font-mono text-[10px] uppercase tracking-widest text-slate-400">Admin</p>
         </div>
         <NavLinks />

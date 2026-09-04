@@ -59,7 +59,7 @@ export default function HeroPortal() {
             href="/about-us"
             className="group inline-flex w-[13rem] items-center justify-center gap-2 rounded-full bg-[#202D61] py-3 pl-6 pr-2 text-[clamp(0.85rem,0.8rem+0.15vw,0.95rem)] font-medium text-white shadow-sm transition-colors hover:bg-[#202D61]/80 xs:w-auto"
           >
-            About Parli Access
+            About Acta
             <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[#202D61] rounded-full bg-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <ArrowUpRight className="h-4 w-4 !text-[#202D61]" strokeWidth={2.5} />
             </span>
