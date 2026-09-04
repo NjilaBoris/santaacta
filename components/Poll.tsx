@@ -11,18 +11,14 @@ type PollOption = {
   accent: string;
 };
 
-export async function GET() {
-  console.log("URL present:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
-  console.log("Key present:", !!process.env.SUPABASE_SERVICE_ROLE_KEY);
-  // ...rest of your code
-}
+const POLL_ID = "a0000000-0000-0000-0000-000000000001";
 
 const POLL_OPTIONS: PollOption[] = [
-  { id: "Construction-and-improvement-of-market-sheds", icon: <IconHome2 stroke={2} />, label: "Construction and improvement of market shedst", accent: "bg-sky-600" },
+  { id: "Construction-and-improvement-of-market-sheds", icon: <IconHome2 stroke={2} />, label: "Construction and improvement of market sheds", accent: "bg-sky-600" },
   { id: "Waste-disposal-and-sanitation", icon: <IconRecycle stroke={2} />, label: "Waste disposal and sanitation", accent: "bg-rose-600" },
   { id: "Road-maintenance-and-accessibility", icon: <IconRoad stroke={2} />, label: "Road maintenance and accessibility", accent: "bg-violet-600" },
   { id: "Water-supply", icon: <IconDroplets stroke={2} />, label: "Water supply", accent: "bg-emerald-600" },
-  { id: "Community-infrastructure-and-public-facilities", icon: <IconBuildingCommunity stroke={2} />, label: "Water supply", accent: "bg-emerald-600" },
+  { id: "Community-infrastructure-and-public-facilities", icon: <IconBuildingCommunity stroke={2} />, label: "Community infrastructure and public facilities", accent: "bg-emerald-600" },
 ];
 
 const INITIAL_VOTES: Record<string, number> = {
@@ -105,10 +101,13 @@ export default function ParliamentPoll() {
       const res = await fetch("/api/poll/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ deviceId, optionId: id }),
+        body: JSON.stringify({ deviceId, optionId: id, pollId: POLL_ID }),
       });
 
-      if (!res.ok) throw new Error("Vote failed");
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? "Vote failed");
+      }
 
       const { votes: updated } = await res.json();
       const nextVotes = Object.fromEntries(
@@ -149,7 +148,6 @@ export default function ParliamentPoll() {
                   isSelected ? "bg-orange-50" : "bg-neutral-100 hover:bg-neutral-200/70"
                 }`}
               >
-                {/* Animated fill bar */}
                 <motion.div
                   className={`absolute inset-y-0 left-0 ${isSelected ? "bg-orange-100" : "bg-neutral-200"}`}
                   initial={{ width: 0 }}
@@ -157,7 +155,6 @@ export default function ParliamentPoll() {
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 />
 
-                {/* Selected-option accent tick on the far right */}
                 {isSelected && (
                   <motion.div
                     layoutId="pollAccentTick"
@@ -167,7 +164,6 @@ export default function ParliamentPoll() {
                   />
                 )}
 
-                {/* Icon badge */}
                 <span
                   className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-base text-white sm:h-10 sm:w-10 sm:text-lg ${option.accent}`}
                   aria-hidden="true"
@@ -175,12 +171,10 @@ export default function ParliamentPoll() {
                   {option.icon}
                 </span>
 
-                {/* Label */}
                 <span className="relative z-10 flex-1 truncate text-[13.5px] font-semibold text-neutral-900 sm:text-[15px]">
                   {option.label}
                 </span>
 
-                {/* Percentage */}
                 <span
                   className={`relative z-10 shrink-0 font-mono text-sm font-bold sm:text-base ${
                     isSelected ? "text-orange-600" : "text-neutral-900"
@@ -195,7 +189,6 @@ export default function ParliamentPoll() {
 
         <p className="mt-8 text-center font-serif text-lg italic text-neutral-700 sm:mt-10 sm:text-xl">
           Poll results will be made available to promote informed community discussion and support constructive citizen– Council dialogue.
-
         </p>
       </div>
     </section>
