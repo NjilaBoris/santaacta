@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'www.assnat.cm',
-        pathname: '',
+         pathname: '/**',
       },
     ],
   },  /* config options here */
