@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { MoreVertical, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 type Photo = {
   id: string;
@@ -198,150 +199,150 @@ const photos: Photo[] = [
     alt: "Stacked books and a cup on a wooden table",
     aspect: "square",
   },
-  {
-    id: "31",
-    src: "/images/31.jpg",
-    alt: "Aerial view of a winding river through green fields",
-    aspect: "landscape",
-  },
-  {
-    id: "32",
-    src: "/images/32.jpg",
-    alt: "White ceramic vase with dried grasses",
-    aspect: "portrait",
-  },
-  {
-    id: "33",
-    src: "/images/33.jpg",
-    alt: "Golden hour across a modern residential street",
-    aspect: "square",
-  },
-  {
-    id: "34",
-    src: "/images/34.jpg",
-    alt: "Rainy glass facade reflecting city lights",
-    aspect: "tall",
-  },
-  {
-    id: "35",
-    src: "/images/35.jpg",
-    alt: "Dried lavender stems in a soft linen backdrop",
-    aspect: "square",
-  },
-  {
-    id: "36",
-    src: "/images/36.jpg",
-    alt: "A line of umbrellas in a quiet city square",
-    aspect: "landscape",
-  },
-  {
-    id: "37",
-    src: "/images/37.jpg",
-    alt: "Open window with sheer curtains and sunlight",
-    aspect: "portrait",
-  },
-  {
-    id: "38",
-    src: "/images/38.jpg",
-    alt: "Fresh blueberries in a ceramic bowl",
-    aspect: "square",
-  },
-  {
-    id: "39",
-    src: "/images/39.jpg",
-    alt: "Cliffside house overlooking the ocean",
-    aspect: "landscape",
-  },
-  {
-    id: "40",
-    src: "/images/40.jpg",
-    alt: "Terracotta planters lined along a sunlit wall",
-    aspect: "portrait",
-  },
-  {
-    id: "41",
-    src: "/images/41.jpg",
-    alt: "Colorful market fruit display in a narrow street",
-    aspect: "square",
-  },
-  {
-    id: "42",
-    src: "/images/42.jpg",
-    alt: "Warm wooden cabin exterior under twilight sky",
-    aspect: "landscape",
-  },
-  {
-    id: "43",
-    src: "/images/43.jpg",
-    alt: "Monochrome arrangement of folded linens",
-    aspect: "portrait",
-  },
-  {
-    id: "44",
-    src: "/images/44.jpg",
-    alt: "Lush botanical garden path in soft morning fog",
-    aspect: "square",
-  },
-  {
-    id: "45",
-    src: "/images/45.jpg",
-    alt: "Curved roofline of a modern building at dusk",
-    aspect: "tall",
-  },
-  {
-    id: "46",
-    src: "/images/46.jpg",
-    alt: "White sand dunes with long shadows at noon",
-    aspect: "landscape",
-  },
-  {
-    id: "47",
-    src: "/images/47.jpg",
-    alt: "Vintage camera resting on a cream tablecloth",
-    aspect: "square",
-  },
-  {
-    id: "48",
-    src: "/images/48.jpg",
-    alt: "Glasshouse corridor lined with tropical plants",
-    aspect: "portrait",
-  },
-  {
-    id: "49",
-    src: "/images/49.jpg",
-    alt: "Cyan pool reflections beneath a stone bridge",
-    aspect: "square",
-  },
-  {
-    id: "50",
-    src: "/images/50.jpg",
-    alt: "Long shadows of trees in a dry field",
-    aspect: "landscape",
-  },
-  {
-    id: "51",
-    src: "/images/51.jpg",
-    alt: "Bent branch with white blossoms in sunlight",
-    aspect: "portrait",
-  },
-  {
-    id: "52",
-    src: "/images/52.jpg",
-    alt: "Stylish coffee corner with curved silhouettes",
-    aspect: "square",
-  },
-  {
-    id: "53",
-    src: "/images/53.jpg",
-    alt: "Quiet mountain lake with mirrored reflections",
-    aspect: "landscape",
-  },
-  {
-    id: "54",
-    src: "/images/54.jpg",
-    alt: "Soft floral arrangement beside a warm lamp",
-    aspect: "square",
-  },
+  // {
+  //   id: "31",
+  //   src: "/images/31.jpg",
+  //   alt: "Aerial view of a winding river through green fields",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "32",
+  //   src: "/images/32.jpg",
+  //   alt: "White ceramic vase with dried grasses",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "33",
+  //   src: "/images/33.jpg",
+  //   alt: "Golden hour across a modern residential street",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "34",
+  //   src: "/images/34.jpg",
+  //   alt: "Rainy glass facade reflecting city lights",
+  //   aspect: "tall",
+  // },
+  // {
+  //   id: "35",
+  //   src: "/images/35.jpg",
+  //   alt: "Dried lavender stems in a soft linen backdrop",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "36",
+  //   src: "/images/36.jpg",
+  //   alt: "A line of umbrellas in a quiet city square",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "37",
+  //   src: "/images/37.jpg",
+  //   alt: "Open window with sheer curtains and sunlight",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "38",
+  //   src: "/images/38.jpg",
+  //   alt: "Fresh blueberries in a ceramic bowl",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "39",
+  //   src: "/images/39.jpg",
+  //   alt: "Cliffside house overlooking the ocean",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "40",
+  //   src: "/images/40.jpg",
+  //   alt: "Terracotta planters lined along a sunlit wall",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "41",
+  //   src: "/images/41.jpg",
+  //   alt: "Colorful market fruit display in a narrow street",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "42",
+  //   src: "/images/42.jpg",
+  //   alt: "Warm wooden cabin exterior under twilight sky",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "43",
+  //   src: "/images/43.jpg",
+  //   alt: "Monochrome arrangement of folded linens",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "44",
+  //   src: "/images/44.jpg",
+  //   alt: "Lush botanical garden path in soft morning fog",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "45",
+  //   src: "/images/45.jpg",
+  //   alt: "Curved roofline of a modern building at dusk",
+  //   aspect: "tall",
+  // },
+  // {
+  //   id: "46",
+  //   src: "/images/46.jpg",
+  //   alt: "White sand dunes with long shadows at noon",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "47",
+  //   src: "/images/47.jpg",
+  //   alt: "Vintage camera resting on a cream tablecloth",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "48",
+  //   src: "/images/48.jpg",
+  //   alt: "Glasshouse corridor lined with tropical plants",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "49",
+  //   src: "/images/49.jpg",
+  //   alt: "Cyan pool reflections beneath a stone bridge",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "50",
+  //   src: "/images/50.jpg",
+  //   alt: "Long shadows of trees in a dry field",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "51",
+  //   src: "/images/51.jpg",
+  //   alt: "Bent branch with white blossoms in sunlight",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "52",
+  //   src: "/images/52.jpg",
+  //   alt: "Stylish coffee corner with curved silhouettes",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "53",
+  //   src: "/images/53.jpg",
+  //   alt: "Quiet mountain lake with mirrored reflections",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "54",
+  //   src: "/images/54.jpg",
+  //   alt: "Soft floral arrangement beside a warm lamp",
+  //   aspect: "square",
+  // },
 ];
 
 const aspectClass: Record<Photo["aspect"], string> = {
@@ -379,8 +380,10 @@ function PhotoCard({ photo }: { photo: Photo }) {
       className="group relative mb-3 break-inside-avoid overflow-hidden rounded-2xl bg-neutral-100 sm:mb-4"
     >
       <div className={`relative w-full ${aspectClass[photo.aspect]}`}>
-        <img
+        <Image
           src={photo.src}
+          width={300}
+          height={800}
           alt={photo.alt}
           loading="lazy"
           onLoad={() => setLoaded(true)}
