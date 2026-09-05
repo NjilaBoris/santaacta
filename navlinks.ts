@@ -63,7 +63,7 @@ export const NAV_LINKS = [
     href: "/engage",
     submenu: [
       {
-        label: "Write to your MP",
+        label: "Write to your Council",
         href: "/engage/write-council",
         description: "Send a message directly to your Mayor or Councillor.",
         icon: Mail,

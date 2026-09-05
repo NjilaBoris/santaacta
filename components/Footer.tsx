@@ -27,7 +27,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-sm">
-              ACTA connects residents of Santa with their local council — news, services,
+              ACTA connects residents of Santa with their local council  news, services,
               departments, and a direct line to elected representatives.
             </p>
 

@@ -10,12 +10,14 @@ export type Department = {
   code: string
   title: string
   description: string
+  img: string;
   bureaus: Bureau[]
 }
 
 export const departments: Department[] = [
   {
     id: 'general-affairs',
+    img: '/6.jpg',
     code: '3.A',
     title: 'General Affairs Service',
     description:
@@ -56,6 +58,7 @@ export const departments: Department[] = [
   },
   {
     id: 'economic-financial',
+    img: "/6.jpg",
     code: '3.B',
     title: 'Economic and Financial Service',
     description:
@@ -95,6 +98,7 @@ export const departments: Department[] = [
   },
   {
     id: 'planning-development',
+    img: "/4.jpg",
     code: '3.C',
     title: 'Technical Service for Planning and Regional Development',
     description:
@@ -119,6 +123,7 @@ export const departments: Department[] = [
   },
   {
     id: 'hygiene-sanitation',
+    img: "/6.jpg",
     code: '3.D',
     title: 'Hygiene and Sanitation Service',
     description: 'Supports efforts to maintain clean, healthy, and environmentally safe communities across Santa.',
@@ -141,6 +146,7 @@ export const departments: Department[] = [
   },
   {
     id: 'social-cultural',
+    img: "/8.jpg",
     code: '3.E',
     title: 'Social and Cultural Service',
     description:
@@ -173,6 +179,7 @@ export const departments: Department[] = [
   },
   {
     id: 'communication-cooperation',
+    img: "/7.jpg",
     code: '3.F',
     title: 'Communication, Cooperation and Local Partnership Bureau',
     description: 'Supports communication between the Council, residents, community actors, and partner organisations.',

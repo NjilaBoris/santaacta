@@ -1,13 +1,27 @@
 import { DepartmentsNav } from '@/components/DepartmentNav'
 import { DepartmentSection } from '@/components/DepartmentSection'
+import PageHero from '@/components/PageHero'
 import { departments } from '@/council'
+import { FileText } from 'lucide-react'
 
 
 export default function DepartmentsPage() {
   return (
-    <main className="flex-1 pb-8">
+    <main className="flex-1 pb-8 px-1 md:px-8">
       <header className="lg:pt-32 pt-8 md:pt-18">
-        <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+        <div className='md:px-10 lg:px-20 py-6'>
+
+        <PageHero 
+        imageSrc='/6.jpg' 
+        imageAlt="Council Departments" 
+        description="The Santa Council is organised into six services, each responsible for specific areas of local administration and community development."
+        title='Departments &amp; specialised services'
+        priority
+        badgeIcon={<FileText />}
+        badgeLabel="Policy research & analysis"
+        />
+        </div>
+        {/* <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
           <div className="flex items-center gap-3 text-forest">
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-ink-soft">
               Council Departments
@@ -20,7 +34,7 @@ export default function DepartmentsPage() {
             The Santa Council is organised into six services, each responsible for specific areas of local
             administration and community development.
           </p>
-        </div>
+        </div> */}
       </header>
 
       <div className="">
