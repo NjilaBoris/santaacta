@@ -148,13 +148,13 @@ export default function ContactSalesPage() {
                 <p className="mt-1.5 text-[0.82rem] leading-relaxed text-slate-500 sm:text-sm">
                   For other queries, please get in touch with us via email.
                 </p>
-                <a
+                {/* <a
                   href="mailto:politicosinfo@gmail.com"
                   className="mt-3 flex items-center gap-1.5 text-[0.82rem] font-medium text-slate-700 hover:text-slate-900 sm:text-sm"
                 >
                   <MailIcon />
                   politicosinfo@gmail.com
-                </a>
+                </a> */}
               </div>
             </motion.div>
           </div>

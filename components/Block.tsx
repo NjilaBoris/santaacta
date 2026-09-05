@@ -22,7 +22,7 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
             transition={{ duration: 0.4, delay: i * 0.05 }}
             className="rounded-md border border-line bg-paper-raised p-5 sm:p-6"
           >
-            <h3 className="font-display text-base font-medium text-forest-dark sm:text-lg">{card.title}</h3>
+            <h3 className=" text-base font-medium text-forest-dark sm:text-lg">{card.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{card.description}</p>
             {card.rows && (
               <div className="mt-4 space-y-3 border-t border-line pt-4">

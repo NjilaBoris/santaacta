@@ -1,5 +1,7 @@
 "use client";
 
+import PageHero from "@/components/PageHero";
+import { servicesIntro } from "@/serverdata";
 import { motion, type Variants } from "framer-motion";
 
 
@@ -75,9 +77,9 @@ export default function LegislativeProcedure() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="max-w-2xl"
+          className=""
         >
-          <motion.div
+          {/* <motion.div
             variants={fadeUp}
             className="mb-5 flex items-center gap-3 text-gray-600 text-[clamp(0.68rem,0.63rem+0.2vw,0.78rem)] uppercase tracking-[0.18em] sm:mb-6"
           >
@@ -96,7 +98,15 @@ export default function LegislativeProcedure() {
             className="mt-5 text-pretty text-[clamp(0.92rem,0.86rem+0.3vw,1.08rem)] leading-relaxed text-[#1C1B18]/75 sm:mt-6"
           >
           The Santa Council Executive provides political and administrative leadership for the municipality: guiding Council affairs, overseeing local development priorities, and supporting the delivery of municipal services.
-          </motion.p>
+          </motion.p> */}
+                          <PageHero 
+                          imageSrc='/6.jpg' 
+                          imageAlt="Council services" 
+                          description="The Santa Council Executive provides political and administrative leadership for the municipality: guiding Council affairs, overseeing local development priorities, and supporting the delivery of municipal services."
+                          title="Council Executive"
+                          priority
+                          badgeLabel="Executive & Leadership"
+                          />
         </motion.div>
         <div className="mt-14 sm:mt-16 lg:mt-20">
           <motion.ol
