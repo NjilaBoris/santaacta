@@ -11,6 +11,8 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import { servicesIntro } from "@/serverdata";
 
 
 
@@ -89,22 +91,16 @@ export default function ResourcesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="max-w-2xl"
+          className=""
         >
-
-          <motion.h2
-            variants={fadeUp}
-            className="text-balance text-[clamp(2rem,1.6rem+2vw,3.25rem)] font-semibold leading-[1.1] tracking-tight"
-          >
-            Laws & reference documents
-          </motion.h2>
-
-          <motion.p
-            variants={fadeUp}
-            className="mt-5 max-w-xl text-pretty text-[clamp(0.95rem,0.88rem+0.35vw,1.15rem)] leading-relaxed text-[#1C1B18]/75 sm:mt-6"
-          >
-            Primary texts that govern local authorities and elections in Cameroon.
-          </motion.p>
+                            <PageHero 
+                            imageSrc='/6.jpg' 
+                            imageAlt="Council services" 
+                            description="Primary texts that govern local authorities and elections in Cameroon."
+                            title=" Laws & reference documents"
+                            priority
+                            
+                            />
         </motion.div>
 
         <motion.ul

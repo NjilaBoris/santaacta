@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import PageHero from "@/components/PageHero";
 
 function TricolorMark({ className = "" }: { className?: string }) {
   return (
@@ -206,13 +207,15 @@ export default function WriteToMpPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="md:sticky md:top-16 md:self-start"
           >
-            <h1 className="font-display text-[clamp(2rem,1.5rem+2.4vw,3rem)] font-medium leading-[1.06] tracking-tight">
-              Write to your Mayor / Councillor
-            </h1>
-
-            <p className="mt-5 max-w-prose text-[clamp(0.95rem,0.9rem+0.3vw,1rem)] leading-relaxed text-ink/75 sm:mt-6">
-              Do you have a concern affecting your quarter, village, or community in Santa? ACTA gives residents a simple way to raise issues, ask questions, share ideas, and communicate directly with their local representatives.
-            </p>
+                                      <PageHero 
+                                      imageSrc='/7.jpg' 
+                                      imageAlt="Council services" 
+                                      description=" Do you have a concern affecting your quarter, village, or community in Santa? ACTA gives residents a simple way to raise issues, ask questions, share ideas, and communicate directly with their local representatives.."
+                                      title=" Write to your Mayor / Councillor"
+                                      priority
+                                      
+                                      />
+            
             <p className="mt-5 max-w-prose uppercase text-xs leading-relaxed text-ink/75 sm:mt-6">
               What can you write about?
             </p>

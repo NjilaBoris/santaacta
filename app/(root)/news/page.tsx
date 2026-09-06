@@ -34,7 +34,7 @@ type NewsRow = {
   id: string;
   title: string;
   slug: string;
-  cover_image_url: string;
+  cover_image_url: string | null;
   created_at: string;
 };
 
@@ -46,10 +46,9 @@ function formatDate(iso: string) {
   });
 }
 
-
 function NewsHero() {
   return (
-    <section className="bg-[#F7F3EA] px-4 pb-8 pt-18 md:pt-24 lg:pt-38 sm:px-6 sm:pb-10 sm:pt-8 lg:px-10 lg:pb-14">
+    <section className="bg-[#F7F3EA] px-4 pb-8 pt-18 sm:px-6 sm:pb-10 sm:pt-8 md:pt-24 lg:px-10 lg:pb-14 lg:pt-38">
       <div className="mx-auto max-w-6xl">
         <motion.div initial="hidden" animate="visible" custom={0} variants={fadeUp}>
           <Link
@@ -122,7 +121,6 @@ function NewsHero() {
   );
 }
 
-
 function NewsCard({ item, index }: { item: NewsItem; index: number }) {
   return (
     <motion.article
@@ -157,7 +155,6 @@ function NewsCard({ item, index }: { item: NewsItem; index: number }) {
     </motion.article>
   );
 }
-
 
 function NewsGrid({ items, loading }: { items: NewsItem[]; loading: boolean }) {
   if (loading) {
@@ -227,7 +224,7 @@ export default function NewsPage() {
           date: formatDate(row.created_at),
           title: row.title,
           href: `/news/${row.slug}`,
-          image: row.cover_image_url,
+          image: row.cover_image_url ?? "/placeholder.jpg",
         }));
         setItems(mapped);
       }

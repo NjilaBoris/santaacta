@@ -8,6 +8,7 @@ import {
   type Variants,
 } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 type Photo = {
   id: string;
@@ -467,7 +468,9 @@ export default function ImageCarousel({
             }}
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
-            <img
+            <Image
+              width={500}
+              height={500}
               src={current.src}
               alt={current.alt}
               draggable={false}
@@ -529,9 +532,11 @@ export default function ImageCarousel({
                   : "ring-transparent opacity-60 hover:opacity-90"
               }`}
             >
-              <img
+              <Image
                 src={photo.src}
                 alt=""
+                width={500}
+                height={500}
                 draggable={false}
                 className="h-full w-full object-cover"
               />

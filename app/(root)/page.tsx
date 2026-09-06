@@ -6,7 +6,9 @@ import HeroPortal from "@/components/HeroPortal";
 import ImageCarousel from "@/components/Imagecarousel";
 import ParliamentPoll from "@/components/Poll";
 import StatsCards from "@/components/Quote";
+import Skeleton from "@/components/Skeleton";
 import WhatsAppButton from "@/components/Whatsaap";
+import { Suspense } from "react";
 
 
 const Home = () => {
@@ -15,9 +17,14 @@ const Home = () => {
       <HeroSlider />
       <StatsCards />
       <FeatureGrid />
-      <LatestNews />
+
+      <Suspense fallback={<Skeleton />}>
+        <LatestNews />
+      </Suspense>
       <ParliamentPoll />
-      <PoliticsFeed />
+       <Suspense fallback={<Skeleton />}>
+        <PoliticsFeed />
+      </Suspense>
       <ImageCarousel/>
       {/* <PodcastSpotlight/> */}
       <HeroPortal />
