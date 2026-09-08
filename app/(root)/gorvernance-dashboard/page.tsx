@@ -12,6 +12,7 @@ import {
   Landmark,
   type LucideIcon,
 } from "lucide-react";
+import StatsCards from "@/components/Quote";
 
 
 const TOTAL_SEATS = 180;
@@ -289,9 +290,9 @@ function BureauSection() {
           const Icon = role.icon;
           return (
             <motion.div
-              key={role.title}
-              variants={cardVariants}
-              className="flex flex-col gap-4 bg-white p-6"
+            key={role.title}
+            variants={cardVariants}
+            className="flex flex-col gap-4 bg-white p-6"
             >
               <div className="flex items-center justify-between">
                 <Icon className="h-5 w-5 text-neutral-800" strokeWidth={1.75} />
@@ -311,6 +312,7 @@ function BureauSection() {
           );
         })}
       </motion.div>
+        <StatsCards />
     </div>
   );
 }

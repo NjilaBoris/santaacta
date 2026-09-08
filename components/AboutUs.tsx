@@ -134,7 +134,7 @@ export default function AboutUs() {
             className=" aspect-square w-full "
           >
             {/* <HeroGraphic /> */}
-            <img src="/6.jpg" alt="Council services" className="h-full w-full rounded-2xl object-cover" />
+            <img src="/8.jpg" alt="Council services" className="h-full w-full rounded-2xl object-cover" />
           </motion.div>
         </div>
       </section>
