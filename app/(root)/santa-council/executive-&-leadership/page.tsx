@@ -100,7 +100,7 @@ export default function LegislativeProcedure() {
           The Santa Council Executive provides political and administrative leadership for the municipality: guiding Council affairs, overseeing local development priorities, and supporting the delivery of municipal services.
           </motion.p> */}
                           <PageHero 
-                          imageSrc='/6.jpg' 
+                          imageSrc='/8.jpg' 
                           imageAlt="Council services" 
                           description="The Santa Council Executive provides political and administrative leadership for the municipality: guiding Council affairs, overseeing local development priorities, and supporting the delivery of municipal services."
                           title="Council Executive"

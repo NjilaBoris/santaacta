@@ -9,7 +9,7 @@ const supabase = createClient(
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const NOTIFY_EMAIL = "peoplesparliament5@gmail.com";
+const NOTIFY_EMAIL = "info@santaacta.com";
 
 type Payload = {
   community: string;

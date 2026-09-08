@@ -17,7 +17,7 @@ export type Department = {
 export const departments: Department[] = [
   {
     id: 'general-affairs',
-    img: '/6.jpg',
+    img: '/7.jpg',
     code: '3.A',
     title: 'General Affairs Service',
     description:
@@ -58,7 +58,7 @@ export const departments: Department[] = [
   },
   {
     id: 'economic-financial',
-    img: "/6.jpg",
+    img: "/8.jpg",
     code: '3.B',
     title: 'Economic and Financial Service',
     description:
@@ -123,7 +123,7 @@ export const departments: Department[] = [
   },
   {
     id: 'hygiene-sanitation',
-    img: "/6.jpg",
+    img: "/8.jpg",
     code: '3.D',
     title: 'Hygiene and Sanitation Service',
     description: 'Supports efforts to maintain clean, healthy, and environmentally safe communities across Santa.',

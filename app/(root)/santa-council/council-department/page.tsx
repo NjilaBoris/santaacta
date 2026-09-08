@@ -12,7 +12,7 @@ export default function DepartmentsPage() {
         <div className='md:px-10 lg:px-20 py-6'>
 
         <PageHero 
-        imageSrc='/6.jpg' 
+        imageSrc='/8.jpg' 
         imageAlt="Council Departments" 
         description="The Santa Council is organised into six services, each responsible for specific areas of local administration and community development."
         title='Departments &amp; specialised services'

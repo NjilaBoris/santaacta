@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const NOTIFY_EMAIL = "politicosinfo@gmail.com"; 
+const NOTIFY_EMAIL = "info@santaacta.com";
 
 type Payload = {
   firstName: string;
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
   try {
     await resend.emails.send({
-      from: "Parli Access <notifications@parliaccess.org>", 
+      from: "Santa ACTA <notifications@santaacta.com>",
       to: NOTIFY_EMAIL,
       replyTo: body.email,
       subject: `New sales inquiry: ${body.subject}`,

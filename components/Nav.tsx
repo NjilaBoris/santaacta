@@ -14,16 +14,7 @@ function useLocation() {
   const [location, setLocation] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://ipapi.co/json/")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.city && data.country_name) {
-          setLocation(`${data.city}, ${data.country_name}`);
-        } else {
-          setLocation(null);
-        }
-      })
-      .catch(() => setLocation(null));
+    setLocation("Bamenda, Cameroon");
   }, []);
 
   return location;
