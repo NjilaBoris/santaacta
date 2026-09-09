@@ -8,7 +8,6 @@ import ImageCarousel from "@/components/Imagecarousel";
 import ParliamentPoll from "@/components/Poll";
 import StatsCards from "@/components/Quote";
 import Skeleton from "@/components/Skeleton";
-import WhatsAppButton from "@/components/Whatsaap";
 import { Suspense } from "react";
 
 
@@ -29,8 +28,7 @@ const Home = () => {
       <ImageCarousel/>
       {/* <PodcastSpotlight/> */}
       <HeroPortal />
-      <WhatsAppButton />
-      <ActaAssistantFab/>
+      
     </>
   );
 };
