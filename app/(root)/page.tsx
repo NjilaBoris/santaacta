@@ -1,3 +1,4 @@
+import ActaAssistantFab from "@/components/ActaAssistant";
 import PoliticsFeed from "@/components/Blog";
 import FeatureGrid from "@/components/Feature";
 import HeroSlider from "@/components/Hero";
@@ -29,6 +30,7 @@ const Home = () => {
       {/* <PodcastSpotlight/> */}
       <HeroPortal />
       <WhatsAppButton />
+      <ActaAssistantFab/>
     </>
   );
 };
