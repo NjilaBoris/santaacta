@@ -216,7 +216,7 @@ export default function ParliamentPoll() {
                 </span>
 
                 <span
-                  className={`relative z-10 shrink-0 font-mono text-sm font-bold sm:text-base ${
+                  className={`relative z-10 shrink-0  text-sm font-bold sm:text-base ${
                     isSelected ? "text-orange-600" : "text-neutral-900"
                   }`}
                 >
@@ -227,7 +227,7 @@ export default function ParliamentPoll() {
           })}
         </div>
 
-        <p className="mt-8 text-center font-serif text-lg italic text-neutral-700 sm:mt-10 sm:text-xl">
+        <p className="mt-8 text-center  text-lg italic text-neutral-700 sm:mt-10 sm:text-xl">
           Poll results will be made available to promote informed community discussion and support constructive citizen– Council dialogue.
         </p>
       </div>
