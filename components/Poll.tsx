@@ -11,7 +11,7 @@ type PollOption = {
   accent: string;
 };
 
-const POLL_ID = "a0000000-0000-0000-0000-000000000001";
+const POLL_ID = "7320d2fc-893f-4ebe-ade3-5dc6f23fa43b";
 
 const POLL_OPTIONS: PollOption[] = [
   { id: "Construction-and-improvement-of-market-sheds", icon: <IconHome2 stroke={2} />, label: "Construction and improvement of market sheds", accent: "bg-sky-600" },
@@ -92,7 +92,13 @@ export default function ParliamentPoll() {
   }, []);
 
   async function handleVote(id: string) {
-    if (isVoting || selectedId === id) return;
+    if (isVoting) return;
+
+    // clicking the option you already voted for retracts it
+    if (selectedId === id) {
+      await handleRetract();
+      return;
+    }
 
     setIsVoting(true);
     const deviceId = getOrCreateDeviceId();
@@ -106,6 +112,11 @@ export default function ParliamentPoll() {
 
       if (!res.ok) {
         const body = await res.json().catch(() => null);
+        if (res.status === 409) {
+          // device already has a vote from an earlier session — reflect that
+          setSelectedId(id);
+          return;
+        }
         throw new Error(body?.error ?? "Vote failed");
       }
 
@@ -117,6 +128,35 @@ export default function ParliamentPoll() {
       setSelectedId(id);
     } catch (err) {
       console.error("Failed to cast vote:", err);
+    } finally {
+      setIsVoting(false);
+    }
+  }
+
+  async function handleRetract() {
+    setIsVoting(true);
+    const deviceId = getOrCreateDeviceId();
+
+    try {
+      const res = await fetch("/api/poll/vote", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId, pollId: POLL_ID }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? "Retract failed");
+      }
+
+      const { votes: updated } = await res.json();
+      const nextVotes = Object.fromEntries(
+        updated.map((o: { id: string; vote_count: number }) => [o.id, o.vote_count]),
+      );
+      setVotes(nextVotes);
+      setSelectedId(null);
+    } catch (err) {
+      console.error("Failed to retract vote:", err);
     } finally {
       setIsVoting(false);
     }

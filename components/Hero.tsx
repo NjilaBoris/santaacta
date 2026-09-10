@@ -14,7 +14,7 @@ const SLIDES: Slide[] = [
   { image: "/7.jpg" },
   { image: "/8.jpg" },
   { image: "/9.jpg" },
-  { image: "/6.jpg" },
+  { image: "/images/28.jpg" },
 ];
 
 const AUTOPLAY_MS = 6000;
