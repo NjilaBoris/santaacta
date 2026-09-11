@@ -193,7 +193,7 @@ function NewsGrid({ items, loading }: { items: NewsItem[]; loading: boolean }) {
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
           {items.map((item, i) => (
-            <NewsCard key={item.id} item={item} index={i + 5} />
+            <NewsCard key={item.id} item={item} index={Math.min(i, 5) + 5} />
           ))}
         </div>
       </div>
@@ -212,8 +212,7 @@ export default function NewsPage() {
       const { data, error } = await supabase
         .from("blog_posts")
         .select("id, title, slug, cover_image_url, created_at")
-        .order("created_at", { ascending: false })
-        .limit(3);
+        .order("created_at", { ascending: false });
 
       if (cancelled) return;
 
