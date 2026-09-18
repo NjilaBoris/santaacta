@@ -175,6 +175,7 @@ export default function ParliamentPoll() {
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-3.5">
           {POLL_OPTIONS.map((option) => {
             const percent = percentages[option.id] ?? 0;
+            const count = votes[option.id] ?? 0;
             const isSelected = selectedId === option.id;
 
             return (
@@ -220,7 +221,7 @@ export default function ParliamentPoll() {
                     isSelected ? "text-orange-600" : "text-neutral-900"
                   }`}
                 >
-                  {isLoading ? "—" : `${percent}%`}
+                  {isLoading ? "—" : `${count} vote${count === 1 ? "" : "s"}`}
                 </span>
               </button>
             );

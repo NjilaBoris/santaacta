@@ -103,12 +103,9 @@ export default function HeroSlider({ slides = SLIDES }: { slides?: Slide[] }) {
                 onDragEnd={handleDragEnd}
                 className="absolute inset-0"
               >
-                <Image
+                <img
                   src={slide.image}
                   alt=""
-                  width={1000}
-                  height={1200}
-                  priority={index === 0}
                   sizes="(min-width: 1024px) 60vw, 100vw"
                   className="pointer-events-none select-none object-cover aspect-square w-full h-full"
                 />

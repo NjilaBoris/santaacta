@@ -469,8 +469,6 @@ export default function ImageCarousel({
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
             <img
-              width={500}
-              height={500}
               src={current.src}
               alt={current.alt}
               draggable={false}
@@ -532,11 +530,9 @@ export default function ImageCarousel({
                   : "ring-transparent opacity-60 hover:opacity-90"
               }`}
             >
-              <Image
+              <img
                 src={photo.src}
                 alt=""
-                width={500}
-                height={500}
                 draggable={false}
                 className="h-full w-full object-cover"
               />
