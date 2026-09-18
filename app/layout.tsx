@@ -11,7 +11,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 
 const SITE_URL = "https://sanctaacata.com";
 const SITE_NAME = "ACTA";
-const SITE_TITLE = "ACTA — Civic Technology for Santa Subdivision, Cameroon";
+const SITE_TITLE = "ACTA  Civic Technology for Santa Subdivision, Cameroon";
 const SITE_DESCRIPTION =
   "ACTA is a civic technology platform for Santa Subdivision, Cameroon. Explore Santa Council departments and services, find your Councillor, track committees, register births, marriages and deaths, apply for building permits, report market or sanitation issues, take part in polls, and write directly to your Mayor or Councillor.";
 
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "POLITICOS",
     "The People's Parliament",
   ],
-  authors: [{ name: "POLITICOS — Policy Lab for Civic Innovation and Community Solutions" }],
+  authors: [{ name: "POLITICOS  Policy Lab for Civic Innovation and Community Solutions" }],
   creator: "POLITICOS",
   publisher: "POLITICOS",
   category: "Government",
@@ -64,10 +64,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/actalogo1.svg",
         width: 1200,
         height: 630,
-        alt: "ACTA — Data-Driven Civic Technology for Participatory Local Governance in Santa Subdivision",
+        alt: "ACTA  Data-Driven Civic Technology for Participatory Local Governance in Santa Subdivision",
       },
     ],
   },
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.jpg"],
+    images: ["/actalogo1.svg"],
   },
   robots: {
     index: true,
