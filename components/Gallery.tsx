@@ -253,12 +253,12 @@ const photos: Photo[] = [
     alt: "Cliffside house overlooking the ocean",
     aspect: "landscape",
   },
-  {
-    id: "40",
-    src: "/images/40.jpg",
-    alt: "Terracotta planters lined along a sunlit wall",
-    aspect: "portrait",
-  },
+  // {
+  //   id: "40",
+  //   src: "/images/40.jpg",
+  //   alt: "Terracotta planters lined along a sunlit wall",
+  //   aspect: "portrait",
+  // },
   // {
   //   id: "41",
   //   src: "/images/41.jpg",
@@ -380,7 +380,7 @@ function PhotoCard({ photo }: { photo: Photo }) {
       className="group relative mb-3 break-inside-avoid overflow-hidden rounded-2xl bg-neutral-100 sm:mb-4"
     >
       <div className={`relative w-full ${aspectClass[photo.aspect]}`}>
-        <Image
+        <img
           src={photo.src}
           width={300}
           height={800}

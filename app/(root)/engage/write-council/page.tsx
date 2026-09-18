@@ -239,7 +239,7 @@ export default function WriteToMpPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="rounded-2xl border border-ink/10 bg-white/90 p-5 shadow-[0_1px_2px_rgba(28,35,33,0.04),0_16px_40px_-24px_rgba(28,35,33,0.25)] sm:p-7 md:rounded-3xl md:p-9"
+            className="rounded-2xl border border-ink/10 bg-white/90 p-3 shadow-[0_1px_2px_rgba(28,35,33,0.04),0_16px_40px_-24px_rgba(28,35,33,0.25)] sm:p-7 md:rounded-3xl md:p-9"
           >
             <AnimatePresence mode="wait">
               {status === "success" ? (
@@ -351,7 +351,7 @@ export default function WriteToMpPage() {
                       <button
                         type="submit"
                         disabled={status === "submitting"}
-                        className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 py-3.5 text-[clamp(0.9rem,0.86rem+0.2vw,1rem)] font-medium text-paper transition-opacity disabled:opacity-60"
+                        className="mt-1 inline-flex w-full bg-[#203368] text-white items-center justify-center gap-2 rounded-xl bg-ink px-6 py-3.5 text-[clamp(0.9rem,0.86rem+0.2vw,1rem)] font-medium text-paper transition-opacity disabled:opacity-60"
                       >
                         {status === "submitting" ? "Submitting…" : "Submit Message"}
                       </button>

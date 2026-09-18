@@ -65,12 +65,10 @@ export default function PoliticsFeedClient({ stories }: { stories: Story[] }) {
                     whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <Image
+                    <img
                       src={story.image}
                       alt={story.title}
-                      fill
-                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
-                      className="object-cover"
+                      className="object-cover h-full w-full"
                     />
                   </motion.div>
                 </div>

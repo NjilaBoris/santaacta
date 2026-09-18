@@ -58,13 +58,10 @@ export default function PageHero({
       }`}
     >
       <div className="absolute inset-0 -z-10">
-        <Image
+        <img
           src={imageSrc}
           alt={imageAlt}
-          fill
-          priority={priority}
-          sizes="100vw"
-          className="object-cover"
+          className="object-cover h-full w-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/45 to-neutral-950/10" />
       </div>

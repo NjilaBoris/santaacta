@@ -257,96 +257,96 @@ const photos: Photo[] = [
     alt: "Cliffside house overlooking the ocean",
     aspect: "landscape",
   },
-  {
-    id: "40",
-    src: "/images/40.jpg",
-    alt: "Terracotta planters lined along a sunlit wall",
-    aspect: "portrait",
-  },
-  {
-    id: "41",
-    src: "/images/41.jpg",
-    alt: "Colorful market fruit display in a narrow street",
-    aspect: "square",
-  },
-  {
-    id: "42",
-    src: "/images/42.jpg",
-    alt: "Warm wooden cabin exterior under twilight sky",
-    aspect: "landscape",
-  },
-  {
-    id: "43",
-    src: "/images/43.jpg",
-    alt: "Monochrome arrangement of folded linens",
-    aspect: "portrait",
-  },
-  {
-    id: "44",
-    src: "/images/44.jpg",
-    alt: "Lush botanical garden path in soft morning fog",
-    aspect: "square",
-  },
-  {
-    id: "45",
-    src: "/images/45.jpg",
-    alt: "Curved roofline of a modern building at dusk",
-    aspect: "tall",
-  },
-  {
-    id: "46",
-    src: "/images/46.jpg",
-    alt: "White sand dunes with long shadows at noon",
-    aspect: "landscape",
-  },
-  {
-    id: "47",
-    src: "/images/47.jpg",
-    alt: "Vintage camera resting on a cream tablecloth",
-    aspect: "square",
-  },
-  {
-    id: "48",
-    src: "/images/48.jpg",
-    alt: "Glasshouse corridor lined with tropical plants",
-    aspect: "portrait",
-  },
-  {
-    id: "49",
-    src: "/images/49.jpg",
-    alt: "Cyan pool reflections beneath a stone bridge",
-    aspect: "square",
-  },
-  {
-    id: "50",
-    src: "/images/50.jpg",
-    alt: "Long shadows of trees in a dry field",
-    aspect: "landscape",
-  },
-  {
-    id: "51",
-    src: "/images/51.jpg",
-    alt: "Bent branch with white blossoms in sunlight",
-    aspect: "portrait",
-  },
-  {
-    id: "52",
-    src: "/images/52.jpg",
-    alt: "Stylish coffee corner with curved silhouettes",
-    aspect: "square",
-  },
-  {
-    id: "53",
-    src: "/images/53.jpg",
-    alt: "Quiet mountain lake with mirrored reflections",
-    aspect: "landscape",
-  },
-  {
-    id: "54",
-    src: "/images/54.jpg",
-    alt: "Soft floral arrangement beside a warm lamp",
-    aspect: "square",
-  },
+  // {
+  //   id: "40",
+  //   src: "/images/40.jpg",
+  //   alt: "Terracotta planters lined along a sunlit wall",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "41",
+  //   src: "/images/41.jpg",
+  //   alt: "Colorful market fruit display in a narrow street",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "42",
+  //   src: "/images/42.jpg",
+  //   alt: "Warm wooden cabin exterior under twilight sky",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "43",
+  //   src: "/images/43.jpg",
+  //   alt: "Monochrome arrangement of folded linens",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "44",
+  //   src: "/images/44.jpg",
+  //   alt: "Lush botanical garden path in soft morning fog",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "45",
+  //   src: "/images/45.jpg",
+  //   alt: "Curved roofline of a modern building at dusk",
+  //   aspect: "tall",
+  // },
+  // {
+  //   id: "46",
+  //   src: "/images/46.jpg",
+  //   alt: "White sand dunes with long shadows at noon",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "47",
+  //   src: "/images/47.jpg",
+  //   alt: "Vintage camera resting on a cream tablecloth",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "48",
+  //   src: "/images/48.jpg",
+  //   alt: "Glasshouse corridor lined with tropical plants",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "49",
+  //   src: "/images/49.jpg",
+  //   alt: "Cyan pool reflections beneath a stone bridge",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "50",
+  //   src: "/images/50.jpg",
+  //   alt: "Long shadows of trees in a dry field",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "51",
+  //   src: "/images/51.jpg",
+  //   alt: "Bent branch with white blossoms in sunlight",
+  //   aspect: "portrait",
+  // },
+  // {
+  //   id: "52",
+  //   src: "/images/52.jpg",
+  //   alt: "Stylish coffee corner with curved silhouettes",
+  //   aspect: "square",
+  // },
+  // {
+  //   id: "53",
+  //   src: "/images/53.jpg",
+  //   alt: "Quiet mountain lake with mirrored reflections",
+  //   aspect: "landscape",
+  // },
+  // {
+  //   id: "54",
+  //   src: "/images/54.jpg",
+  //   alt: "Soft floral arrangement beside a warm lamp",
+  //   aspect: "square",
+  // },
 ];
 
 const SWIPE_DISTANCE_THRESHOLD = 60;
@@ -371,7 +371,7 @@ const slideVariants: Variants = {
 
 type ImageCarouselProps = {
   images?: Photo[];
-  autoPlayMs?: number; // defaults to 4000ms auto-swipe; pass 0 to disable
+  autoPlayMs?: number; 
 };
 
 export default function ImageCarousel({
@@ -468,7 +468,7 @@ export default function ImageCarousel({
             }}
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
-            <Image
+            <img
               width={500}
               height={500}
               src={current.src}

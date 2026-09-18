@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { ArrowLeft, Newspaper } from "lucide-react";
-import { createClient } from "@supabase/supabase-js";
+
+import { supabase } from "@/lib/supabase";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -16,10 +17,7 @@ const fadeUp: Variants = {
   }),
 };
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
-);
+
 
 type NewsItem = {
   id: string;
@@ -68,13 +66,10 @@ function NewsHero() {
           className="relative mt-4 overflow-hidden rounded-2xl shadow-lg shadow-black/10 sm:mt-6 sm:rounded-3xl"
         >
           <div className="relative aspect-[4/5] w-full xs:aspect-[16/12] sm:aspect-[16/8] lg:aspect-[16/6]">
-            <Image
-              src="/news1.jpg"
+            <img
+              src="n.avif"
               alt="News image"
-              fill
-              priority
-              sizes="(min-width: 1024px) 1152px, 100vw"
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" aria-hidden="true" />
@@ -132,12 +127,10 @@ function NewsCard({ item, index }: { item: NewsItem; index: number }) {
     >
       <Link href={item.href} className="group block">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl sm:rounded-2xl">
-          <Image
+          <img
             src={item.image}
             alt={item.title}
-            fill
-            sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 92vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className="object-cover h-full w-full transition-transform duration-500 ease-out group-hover:scale-105"
           />
         </div>
 

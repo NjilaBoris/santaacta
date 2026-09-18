@@ -12,7 +12,7 @@ export type Slide = {
 
 const SLIDES: Slide[] = [
   { image: "/7.jpg" },
-  { image: "/8.jpg" },
+  { image: "/images/22.jpg" },
   { image: "/9.jpg" },
   { image: "/images/28.jpg" },
 ];
@@ -106,10 +106,11 @@ export default function HeroSlider({ slides = SLIDES }: { slides?: Slide[] }) {
                 <Image
                   src={slide.image}
                   alt=""
-                  fill
+                  width={1000}
+                  height={1200}
                   priority={index === 0}
                   sizes="(min-width: 1024px) 60vw, 100vw"
-                  className="pointer-events-none select-none object-cover"
+                  className="pointer-events-none select-none object-cover aspect-square w-full h-full"
                 />
               </motion.div>
             </AnimatePresence>

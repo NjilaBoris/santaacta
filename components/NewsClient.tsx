@@ -38,7 +38,7 @@ export default function LatestNewsClient({
   articles: NewsArticle[];
 }) {
   if (articles.length === 0) {
-    return null; // or a fallback/empty state
+    return null; 
   }
 
   return (
@@ -80,12 +80,10 @@ export default function LatestNewsClient({
               className="group flex flex-col"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-100">
-                <Image
+                <img
                   src={article.image}
                   alt=""
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 h-full w-full"
                 />
               </div>
 

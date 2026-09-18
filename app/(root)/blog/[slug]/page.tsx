@@ -128,7 +128,7 @@ export default function NewsDetailPage() {
         </Link>
 
         <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl sm:mt-6 sm:rounded-3xl">
-          <Image src={item.image} alt={item.title} fill priority className="object-cover" />
+          <img src={item.image} alt={item.title}  className="object-cover" />
         </div>
 
         <span className="mt-5 block font-mono text-[11px] text-ink/50 sm:mt-6 sm:text-xs">

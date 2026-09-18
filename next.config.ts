@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         hostname: 'www.assnat.cm',
          pathname: '/**',
       },
+      {
+         protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },  /* config options here */
 };
